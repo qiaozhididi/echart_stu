@@ -5,11 +5,21 @@
     <title>ECharts入门实例</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.1/echarts.common.min.js"></script>
   </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #main {
+      width: 600px;
+      height: 400px;
+    }
+  </style>
   <body>
     <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
-    <div id="main" style="width: 600px; height: 400px"></div>
+    <div id="main"></div>
     <script>
-        // 初始化echarts对象将页面中的图标容器传入
+      // 初始化echarts对象将页面中的图标容器传入
       // 基于准备好的dom，初始化echarts实例
       var myChart = echarts.init(document.getElementById("main"));
 
@@ -26,7 +36,7 @@
         xAxis: {
           data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
         },
-        yAxis: {},//默认根据数量显示
+        yAxis: {}, //默认根据数量显示
         series: [
           {
             name: "销量",
@@ -38,6 +48,12 @@
 
       // 使用刚指定的配置项和数据显示图表。
       myChart.setOption(option);
+
+      //Echarts 提供了重新计算图表尺寸的方法，开发人员可以再页面尺发生改变时调用该方法
+      window.onresize = function () {
+        myChart.resize();
+        // console.log(onresize);
+      };
     </script>
   </body>
 </html>
