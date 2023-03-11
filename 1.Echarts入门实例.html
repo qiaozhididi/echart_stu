@@ -54,6 +54,10 @@
         myChart.resize();
         // console.log(onresize);
       };
+      //将ehcarts 图表移除页面，需要两步：1.dom操作删除图表容器元素。2.调用echarts提供的方法dispose(),这样实例对象就会在内存中被释放
+      //如果不释放该实例对象，将会造成内存泄漏
+      myChart.dispose();
+
     </script>
   </body>
 </html>
